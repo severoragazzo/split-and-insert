@@ -1,0 +1,14 @@
+/* Do not distribute without VTB Group permission */
+Sub SplitAndInsert()
+Dim adres As String
+Dim i As Long
+For i = 1 To Selection.Count
+  adres = Selection(i).MergeArea.Address
+  If adres <> Selection(i).Address Then
+    Selection(i).UnMerge
+    Selection(i).Copy
+    ActiveSheet.Paste ActiveSheet.Range(adres)
+    Application.CutCopyMode = False
+  End If
+Next
+End Sub
